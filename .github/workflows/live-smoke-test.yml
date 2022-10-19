@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: "Checkout Code ☁️"
         uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly and run all Cypress tests
       - name: "Run Smoke Tests with Cypress 🔎"
+        # run: cypress run
         uses: cypress-io/github-action@v4
         with:
           working-directory: e2e
@@ -24,6 +24,5 @@ jobs:
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # pass GitHub token to allow accurately detecting a build vs a re-run build
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
