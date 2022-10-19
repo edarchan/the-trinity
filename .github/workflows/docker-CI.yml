@@ -9,10 +9,12 @@ jobs:
     environment: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Build an image from Dockerfile
+      - name: "Checkout Code ☁️"
+        uses: actions/checkout@v2
+      - name: "Build an image from Dockerfile 📦"
         run: |
           docker build -t docker.io/edar822/thetrinity:test .
-      - name: Run Trivy Vulnerability Scanner
+      - name: "Run Trivy Vulnerability Scanner 🔎"
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'docker.io/edar822/thetrinity:test'
