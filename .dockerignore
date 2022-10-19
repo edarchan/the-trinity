@@ -2,3 +2,4 @@ Dockerfile
 .dockerignore
 .git/*
 README.md
+e2e/*
