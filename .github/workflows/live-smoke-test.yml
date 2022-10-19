@@ -18,8 +18,6 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           working-directory: e2e
-          build: yarn run build
-          start: yarn start
           browser: chrome
           record: true
         env:
