@@ -3,7 +3,8 @@ name: ci
 on: push
 
 jobs:
-  docker:
+  Docker-Image-Build:
+    environment: Test
     runs-on: ubuntu-latest
     steps:
       -
