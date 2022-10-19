@@ -1,4 +1,4 @@
-name: ci
+name: Nginx-Image
 
 on: push
 
@@ -22,3 +22,4 @@ jobs:
         with:
           push: true
           tags: edar822/thetrinity:latest
+          platforms: linux/amd64,linux/arm64
