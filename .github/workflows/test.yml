@@ -1,0 +1,18 @@
+name: Test
+
+on: 
+  workflow_run:
+    workflows: ["Nginx-Image-CI"]
+    types: [completed]
+    branches:
+      - 'feature/**'
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Code ☁️"
+        uses: actions/checkout@v2
+      - name: "Test"
+        run: |
+          echo "Hello World"
