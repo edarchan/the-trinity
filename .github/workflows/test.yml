@@ -1,9 +1,7 @@
 name: Test
 
 on: 
-  workflow_run:
-    workflows: ["Nginx-Image-CI"]
-    types: [completed]
+  push:
     branches:
       - 'feature/**'
 
