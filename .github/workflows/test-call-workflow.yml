@@ -5,7 +5,7 @@ on:
 
 jobs:
   Test:
-    environment: Test
+    # environment: Test
     runs-on: ubuntu-latest
     outputs:
       appurl: ${{ steps.hello.outputs.appurl }}
