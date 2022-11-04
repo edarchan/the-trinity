@@ -2,13 +2,18 @@ name: Test
 
 on: 
   workflow_call:
+    outputs:
+      appurl:
+        description: "Website URL"
+        value: ${{ jobs.Test.outputs.outputurl }}
+
 
 jobs:
   Test:
-    # environment: Test
+    environment: Test
     runs-on: ubuntu-latest
     outputs:
-      appurl: ${{ steps.hello.outputs.appurl }}
+      outputurl: ${{ steps.hello.outputs.appurl }}
     steps:
       - name: "Pre"
         id: pre
