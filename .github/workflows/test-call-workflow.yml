@@ -1,0 +1,20 @@
+name: Test
+
+on: 
+  workflow_call:
+
+jobs:
+  Test:
+    environment: Test
+    runs-on: ubuntu-latest
+    outputs:
+      appurl: ${{ steps.hello.outputs.appurl }}
+    steps:
+      - name: "Pre"
+        id: pre
+        run: |
+          echo "webapp-url=https://thetrinity.one" >> $GITHUB_OUTPUT
+      - name: "Test"
+        id: hello
+        run: |
+          echo "appurl=${{ steps.pre.outputs.webapp-url }}" >> $GITHUB_OUTPUT
