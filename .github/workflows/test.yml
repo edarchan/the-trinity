@@ -7,6 +7,7 @@ on:
 
 jobs:
   Test:
+    environment: Test
     runs-on: ubuntu-latest
     outputs:
       appurl: ${{ steps.hello.outputs.appurl }}
@@ -14,13 +15,14 @@ jobs:
       - name: "Pre"
         id: pre
         run: |
-          echo "webapp-url=https://thetrinity.one }}" >> $GITHUB_OUTPUT
+          echo "webapp-url=https://thetrinity.one" >> $GITHUB_OUTPUT
       - name: "Test"
         id: hello
         run: |
           echo "appurl=${{ steps.pre.outputs.webapp-url }}" >> $GITHUB_OUTPUT
   Test2:
     needs: Test
+    environment: Test2
     runs-on: ubuntu-latest
     steps:
       - name: "Test3"
