@@ -10,7 +10,7 @@ jobs:
     uses: ./.github/workflows/test-call-workflow.yml
   Test2:
     needs: Test
-    environment: Test2
+    # environment: Test2
     runs-on: ubuntu-latest
     steps:
       - name: "Test3"
