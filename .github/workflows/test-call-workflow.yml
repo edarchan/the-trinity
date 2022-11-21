@@ -1,25 +1,24 @@
-name: Test
+# name: Test
 
-on: 
-  workflow_call:
-    outputs:
-      appurl:
-        description: "Website URL"
-        value: ${{ jobs.Test.outputs.outputurl }}
+# on: 
+#   workflow_call:
+#     outputs:
+#       appurl:
+#         description: "Website URL"
+#         value: ${{ jobs.Test.outputs.outputurl }}
 
-
-jobs:
-  Test:
-    environment: Test
-    runs-on: ubuntu-latest
-    outputs:
-      outputurl: ${{ steps.hello.outputs.appurl }}
-    steps:
-      - name: "Pre"
-        id: pre
-        run: |
-          echo "webapp-url=https://thetrinity.one" >> $GITHUB_OUTPUT
-      - name: "Test"
-        id: hello
-        run: |
-          echo "appurl=${{ steps.pre.outputs.webapp-url }}" >> $GITHUB_OUTPUT
+# jobs:
+#   Test:
+#     environment: Test
+#     runs-on: ubuntu-latest
+#     outputs:
+#       outputurl: ${{ steps.hello.outputs.appurl }}
+#     steps:
+#       - name: "Pre"
+#         id: pre
+#         run: |
+#           echo "webapp-url=https://thetrinity.one" >> $GITHUB_OUTPUT
+#       - name: "Test"
+#         id: hello
+#         run: |
+#           echo "appurl=${{ steps.pre.outputs.webapp-url }}" >> $GITHUB_OUTPUT

@@ -1,18 +1,18 @@
-name: Test
+# name: Test
 
-on: 
-  push:
-    branches:
-      - 'feature/**'
+# on: 
+#   push:
+#     branches:
+#       - 'feature/**'
 
-jobs:
-  Test:
-    uses: ./.github/workflows/test-call-workflow.yml
-  Test2:
-    needs: Test
-    environment: Test2
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Test3"
-        run: |
-          echo "${{ needs.Test.outputs.appurl }}"
+# jobs:
+#   Test:
+#     uses: ./.github/workflows/test-call-workflow.yml
+#   Test2:
+#     needs: Test
+#     environment: Test2
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: "Test3"
+#         run: |
+#           echo "${{ needs.Test.outputs.appurl }}"
