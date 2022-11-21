@@ -1,0 +1,16 @@
+name: Teardown test
+
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  PR-Merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Retrieve name"
+        id: setname
+        run: |
+          echo $GITHUB_HEAD_REF
+          slotname=${GITHUB_REF_NAME//['/']/-}
+          echo "The slot name is ${slotname}"
