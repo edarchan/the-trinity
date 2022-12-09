@@ -4,16 +4,21 @@ on:
   pull_request:
 
 jobs:
+  PR-Pre-Job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Pre-job
+      run: |
+        echo "hello"
   PR-Status:
-    permissions:
-      issues: write
+    needs: PR-Pre-Job
     runs-on: ubuntu-latest
     steps:
     - name: Update Pull Request
       uses: actions/github-script@v6
       with:
         script: |
-          const output = `#### Test 🛫\`
+          const output = `#### Test 🛫\`${{ needs.PR-Pre-Job.status }}\`
 
           *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
 
