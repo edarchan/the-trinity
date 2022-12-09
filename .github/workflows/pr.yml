@@ -5,6 +5,8 @@ on:
 
 jobs:
   PR-Status:
+    permissions:
+      issues: write
     runs-on: ubuntu-latest
     steps:
     - name: Update Pull Request
