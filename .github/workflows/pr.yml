@@ -5,6 +5,8 @@ on:
 
 jobs:
   PR-Pre-Job:
+    outputs:
+      jobstatus: ${{ job.status }}
     runs-on: ubuntu-latest
     steps:
     - name: Pre-job
@@ -18,7 +20,7 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
-          const output = `#### Test 🛫\`${{ needs.PR-Pre-Job.status }}\`
+          const output = `#### Test 🛫\`${{ needs.PR-Pre-Job.outputs.jobstatus }}\`
 
           *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
 
