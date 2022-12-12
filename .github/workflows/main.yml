@@ -1,0 +1,13 @@
+name: Main-Test
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  Test-Main:
+    if: (github.ref.name == 'master')
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello"
