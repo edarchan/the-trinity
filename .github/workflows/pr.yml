@@ -1,0 +1,32 @@
+name: PR Test
+
+on:
+  pull_request:
+
+jobs:
+  PR-Pre-Job:
+    outputs:
+      jobstatus: ${{ job.status }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Pre-job
+      run: |
+        echo "hello"
+  PR-Status:
+    needs: PR-Pre-Job
+    runs-on: ubuntu-latest
+    steps:
+    - name: Update Pull Request
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const output = `#### Test 🛫\`${{ needs.PR-Pre-Job.outputs.jobstatus }}\`
+
+          *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: output
+          })
