@@ -8,11 +8,8 @@ on:
 jobs:
   Test-Master:
     if: |-
-      github.ref != 'refs/heads/master' &&
-      (
-        github.event.name == 'push' ||
-        github.event.name == 'pull_request'
-      )
+      github.ref == 'refs/heads/master' &&
+      (github.event.name == 'push' || github.event.name == 'pull_request')
     runs-on: ubuntu-latest
     environment:
       name: Dev
@@ -21,10 +18,7 @@ jobs:
   Test-Master2:
     if: |-
       github.ref == 'refs/heads/master' &&
-      (
-        github.event.name == 'push' ||
-        github.event.name == 'pull_request'
-      )
+      (github.event.name == 'push' || github.event.name == 'pull_request')
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello"
