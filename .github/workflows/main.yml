@@ -7,11 +7,11 @@ on:
 
 jobs:
   Test-Master:
-    uses: ./.github/test-call-workflow.yml
+    uses: ./.github/workflows/test-call-workflow.yml
     with: 
       environment: 'Testy'
   Test-Master2:
-    uses: ./.github/test-call-workflow.yml
+    uses: ./.github/workflows/test-call-workflow.yml
     with: 
       environment: 'Dev'
   Test-Master3:
