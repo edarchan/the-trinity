@@ -2,8 +2,8 @@ name: Nginx-Image-CI
 
 on: 
   push:
-  branches:
-    - 'feature/**'
+    branches:
+      - 'feature/**'
 
 jobs:
   Image-Build-Scan:
