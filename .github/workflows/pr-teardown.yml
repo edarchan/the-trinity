@@ -6,7 +6,7 @@ on:
 
 jobs:
   PR-Merge:
-    if: ${{ github.base_ref != 'refs/heads/master' }}
+    if: ${{ github.head_ref != 'master' }}
     runs-on: ubuntu-latest
     steps:
       - name: "Retrieve name"
