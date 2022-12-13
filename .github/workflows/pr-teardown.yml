@@ -6,12 +6,14 @@ on:
 
 jobs:
   PR-Merge:
-    if: ${{ github.head_ref != 'refs/heads/master' }}
+    if: ${{ github.base_ref != 'refs/heads/master' }}
     runs-on: ubuntu-latest
     steps:
       - name: "Retrieve name"
         id: setname
         run: |
           echo $GITHUB_HEAD_REF
+          echo $GITHUB_BASE_REF
+          echo $GITHUB_REF
           slotname=${GITHUB_REF_NAME//['/']/-}
           echo "The slot name is ${slotname}"
