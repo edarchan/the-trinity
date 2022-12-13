@@ -7,18 +7,24 @@ on:
 
 jobs:
   Test-Master:
-    if: |
+    if: |-
       github.ref != 'refs/heads/master' &&
-      ( github.event.name == 'push' || github.event.name == 'pull_request' || )
+      (
+        github.event.name == 'push' ||
+        github.event.name == 'pull_request'
+      )
     runs-on: ubuntu-latest
     environment:
       name: Dev
     steps:
       - run: echo "hello"
   Test-Master2:
-    if: |
-      github.ref != 'refs/heads/master' &&
-      ( github.event.name == 'push' || github.event.name == 'pull_request' || )
+    if: |-
+      github.ref == 'refs/heads/master' &&
+      (
+        github.event.name == 'push' ||
+        github.event.name == 'pull_request'
+      )
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello"
