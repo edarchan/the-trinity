@@ -1,0 +1,24 @@
+name: Test
+
+on: 
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+
+jobs:
+  Test:
+    if: |-
+      ${{ 
+        github.ref == 'refs/heads/master' &&
+        (
+          inputs.environment == 'Dev' ||
+          inputs.environment == 'Test'
+        )
+      }}
+    environment: 
+      name: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "hello"
