@@ -26,3 +26,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello"
+  Test-Master3:
+    if: |-
+      ${{ github.ref != 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello"
+  Test-Master4:
+    if: |-
+      ${{ github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello"
