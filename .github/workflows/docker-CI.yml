@@ -2,10 +2,9 @@ name: Nginx-Image-CI
 
 on: 
   push:
-  pull_request:
 
 jobs:
-  Image-Build-Scan-Push:
+  Image-Build-Scan:
     environment: Test
     runs-on: ubuntu-latest
     steps:
