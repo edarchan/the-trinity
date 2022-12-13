@@ -7,7 +7,7 @@ on:
 
 jobs:
   Test-Master:
-    if: | 
+    if: |-
       github.ref != 'refs/heads/master' &&
       (
         github.event.name == 'push' ||
@@ -19,7 +19,7 @@ jobs:
     steps:
       - run: echo "hello"
   Test-Master2:
-    if: | 
+    if: |-
       github.ref == 'refs/heads/master' &&
       (
         github.event.name == 'push' ||
