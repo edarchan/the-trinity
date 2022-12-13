@@ -4,23 +4,26 @@ on:
   pull_request:
 
 jobs:
-  PR-Pre-Job:
+  Image-Build-Scan:
     outputs:
       jobstatus: ${{ job.status }}
+    environment: Test
     runs-on: ubuntu-latest
     steps:
-    - name: Pre-job
-      run: |
-        echo "hello"
+      - name: "Checkout Code ☁️"
+        uses: actions/checkout@v2
+      - name: "Build an image from Dockerfile 📦"
+        run: |
+          docker build -t docker.io/edar822/thetrinity:test .
   PR-Status:
-    needs: PR-Pre-Job
+    needs: Image-Build-Scan
     runs-on: ubuntu-latest
     steps:
     - name: Update Pull Request
       uses: actions/github-script@v6
       with:
         script: |
-          const output = `#### Test 🛫\`${{ needs.PR-Pre-Job.outputs.jobstatus }}\`
+          const output = `#### Docker image build 🛫\`${{ needs.Image-Build-Scan.outputs.jobstatus }}\`
 
           *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
 
