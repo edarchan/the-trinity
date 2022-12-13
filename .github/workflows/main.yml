@@ -10,31 +10,29 @@ jobs:
     if: |-
       ${{ 
         github.ref == 'refs/heads/master' &&
-        github.event.name == 'push'
+        github.event_name == 'push'
       }}
     runs-on: ubuntu-latest
-    environment:
-      name: Dev
     steps:
       - run: echo "hello"
   Test-Master2:
     if: |-
       ${{ 
         github.ref != 'refs/heads/master' &&
-        github.event.name == 'push'
+        github.event_name == 'push'
       }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello"
   Test-Master3:
     if: |-
-      ${{ github.ref != 'refs/heads/master' && github.event.name == 'push' }}
+      ${{ github.ref != 'refs/heads/master' && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello"
   Test-Master4:
     if: |-
-      ${{ github.ref == 'refs/heads/master' && github.event.name == 'push' }}
+      ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello"
