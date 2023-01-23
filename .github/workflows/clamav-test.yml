@@ -1,0 +1,17 @@
+name: ClamAV-Test
+
+on: 
+  push:
+    branches:
+      - feature/clamav
+
+jobs:
+  Cypress-SmokeTest:
+    runs-on: ubuntu-latest
+    container: clamav/clamav:latest
+    steps:
+      - name: "Checkout Code ☁️"
+        uses: actions/checkout@v2
+      - name: "Run ClamAV Scan"
+        working-directory: images
+        run: clamscan gohugo-default-sample-hero-image.jpg
