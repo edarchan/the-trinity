@@ -6,12 +6,20 @@ on:
       - feature/clamav
 
 jobs:
-  Cypress-SmokeTest:
+  ClamAV:
     runs-on: ubuntu-latest
     container: clamav/clamav:latest
     steps:
       - name: "Checkout Code ☁️"
         uses: actions/checkout@v2
+      - name: "Zip images directory for ClamAV Scan"
+        working-directory: images
+        run: tar cfv scan.tar .
       - name: "Run ClamAV Scan"
         working-directory: images
-        run: clamscan gohugo-default-sample-hero-image.jpg
+        run: clamscan scan.tar
+  A11y:
+    runs-on: ubuntu-latest
+    steps:
+      - run: yarn global add a11y
+      - run: yarn a11y https://www.google.com
